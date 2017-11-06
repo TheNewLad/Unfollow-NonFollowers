@@ -1,3 +1,16 @@
+let scroll = 0;
+function scrollToEnd() {	
+	setTimeout(
+	function() {
+		if (scroll !== document.body.scrollHeight) {
+			scroll = document.body.scrollHeight;
+			window.scrollTo(0,document.body.scrollHeight);
+			scrollToEnd();
+		}
+	}, 3000)
+}
+scrollToEnd();
+
 function unfollowNonFollowers() {
 	const following = document.querySelectorAll("[id^='stream-item-user-']")
 	for (let i = 0; i < following.length; i++) {
